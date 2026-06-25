@@ -1,0 +1,62 @@
+{
+    "display": {
+        "separator": " ",
+        "color": {
+            "keys": "blue",
+            "title": "red"
+        },
+        "key": {
+            "width": 20,
+            "type": "both-1"
+        },
+        "bar": {
+            "width": 10,
+            "char": {
+                "elapsed": "■",
+                "total": "-"
+            }
+        },
+        "percent": {
+            "type": 9,
+            "color": {
+                "green": "green",
+                "yellow": "light_yellow",
+                "red": "light_red"
+            }
+        },
+        "disableLinewrap": true
+    },
+	"modules": [
+		// ─── Title ───────────────────────────────────
+		"title",
+		{ "type": "colors", "symbol": "circle"},
+
+		// ─── System ──────────────────────────────────
+		{ "type": "custom", "format": "┌─── System ─────┐┌───────────────────────────────────────────┐" },
+		{ "type": "os", "key": "OS", "keyIcon": "├─ 󰣇", "keyColor": "red",  "outputColor": "blue",  "outputColor": "blue"},
+		{
+			"type": "localip",
+			"key": "Local IP",
+			"keyIcon": "├─ 󰩟",
+			"keyColor": "red",  "outputColor": "blue",
+			"showIpv6": true,
+			"showMac": true,
+			"showSpeed": true,
+			"showMtu": true,
+			"showLoop": true,
+			"showAllIps": true
+		},
+
+		// ─── Desktop ─────────────────────────────────
+		{ "type": "shell", "key": "Shell", "keyIcon": "├─ ", "keyColor": "red",  "outputColor": "blue" },
+
+		// ─── Hardware ────────────────────────────────
+		{ "type": "cpu", "key": "CPU", "keyIcon": "├─ 󰻠", "keyColor": "red",  "outputColor": "blue", "showPeCoreCount": true, "temp": true },
+		{ "type": "gpu", "key": "GPU [{index}]", "keyIcon": "├─ 󰢮", "keyColor": "red",  "outputColor": "blue", "driverSpecific": true, "temp": true },
+
+		// ─── Memory & Storage ────────────────────────
+		{ "type": "memory", "key": "Memory", "keyIcon": "├─ ", "keyColor": "red",  "outputColor": "blue" },
+		{ "type": "disk", "key": "Disk [{name}]", "keyIcon": "├─ 󰨣", "keyColor": "red",  "outputColor": "blue" },
+		{ "type": "custom", "format": "└────────────────┘└───────────────────────────────────────────┘" },
+	]
+}

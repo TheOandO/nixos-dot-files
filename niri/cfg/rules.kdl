@@ -1,0 +1,50 @@
+    window-rule {
+        geometry-corner-radius 8 // Set every window radius to 20
+        clip-to-geometry true
+
+	    background-effect {
+	        blur true
+	    }
+        opacity 0.95
+    }
+
+	window-rule {
+		match is-focused=false
+		opacity 0.85
+	}
+
+    layer-rule {
+        match namespace="^noctalia-wallpaper*"
+        place-within-backdrop true
+    }
+
+	window-rule {
+    		match app-id="zen|obsidian|vscodium|libreoffice" 
+    		exclude title=r#"^Extension: "#  
+    		open-maximized true
+	}
+
+    window-rule {
+        match app-id="zen$" title="^Picture-in-Picture$"
+
+        focus-ring {
+        	off
+        }
+        open-floating true
+        default-column-width { fixed 480; }
+        default-window-height { fixed 270; }
+    	open-focused false
+		open-maximized false
+    	default-floating-position x=50 y=50 relative-to="bottom-right";
+    }
+
+	window-rule {
+	    match app-id="zen$" title=r#"^Extension: "#
+	    open-floating true
+	    open-maximized false
+	    open-maximized-to-edges false
+	    default-column-width { fixed 400; }
+	    default-window-height { fixed 600; }
+	    open-focused false
+	    default-floating-position x=16 y=50 relative-to="top-right";
+	}
