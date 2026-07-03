@@ -58,7 +58,7 @@ hl.on("hyprland.start", function()
 end)
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("kitty -- bash -c sudo /etc/nixos/sync-repos.sh; exec fish")
+    hl.exec_cmd("kitty -- bash -c 'sudo /etc/nixos/sync-repos.sh; exec fish'")
 end)
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
