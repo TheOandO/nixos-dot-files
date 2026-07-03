@@ -56,6 +56,10 @@ local browser     = "zen"
 hl.on("hyprland.start", function()
 	hl.exec_cmd("noctalia")
 end)
+
+hl.on("hyprland.start", function()
+	hl.exec_cmd("kitty -- bash -c sudo /etc/nixos/sync-repos.sh; exec fish")
+end)
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
