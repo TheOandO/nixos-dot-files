@@ -59,6 +59,13 @@ hl.window_rule({
     float = true,
 })
 
+hl.window_rule({
+	  match = {
+	  	class = "*"
+	  },
+	maximize = true,
+})
+
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
 -- uncomment all if you wish to use that.
@@ -79,7 +86,10 @@ hl.window_rule({
 
 hl.workspace_rule({ workspace = "1", persistent = true })
 hl.workspace_rule({ workspace = "2", persistent = true })
-hl.workspace_rule({ workspace = "3", persistent = true })
+hl.workspace_rule({ workspace = "3", persistent = true, default = true })
+hl.workspace_rule({ workspace = "4", persistent = true })
+hl.workspace_rule({ workspace = "5", persistent = true })
+
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
@@ -99,6 +109,6 @@ hl.config({
 hl.config({
     scrolling = {
         fullscreen_on_one_column = true,
-        direction = "right",
+        direction = "down",
     },
 })

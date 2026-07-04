@@ -33,6 +33,7 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(ipc .. " config-reload"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle"}))
+hl.bind(mainMod .. "+ SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle"}))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Move focus with mainMod + arrow keys
@@ -56,7 +57,7 @@ hl.bind("ALT + TAB", hl.dsp.exec_cmd(ipc .. " window-switcher"))
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
-    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
+    hl.bind(mainMod .. " + ALT + " .. key,     hl.dsp.window.move({ workspace = i }))
     end
 
     -- Example special workspace (scratchpad)
@@ -64,10 +65,10 @@ for i = 1, 10 do
     -- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
     -- Scroll through existing workspaces with mainMod + scroll
-    hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
-    hl.bind(mainMod .. " + mouse_down",   hl.dsp.focus({ workspace = "e-1" }))
-    hl.bind(mainMod .. " + ALT + mouse_up", hl.dsp.layout("move +col"))
-    hl.bind(mainMod .. " + ALT + mouse_down", hl.dsp.layout("move -col"))
+    hl.bind(mainMod .. " + ALT + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
+    hl.bind(mainMod .. " + ALT + mouse_down",   hl.dsp.focus({ workspace = "e-1" }))
+    hl.bind(mainMod .. " + mouse_up", hl.dsp.layout("move +col"))
+    hl.bind(mainMod .. " + mouse_down", hl.dsp.layout("move -col"))
     hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "e+1" }))
     hl.bind(mainMod .. " + SHIFT + mouse_down",   hl.dsp.window.move({ workspace = "e-1" }))
     -- Move/resize windows with mainMod + LMB/RMB and dragging
