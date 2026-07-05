@@ -20,7 +20,7 @@ local suppressMaximizeRule = hl.window_rule({
 -- Exclude zen extension popups from maximizing
 hl.window_rule({
     match = {
-        initial_class = "zen",
+        class = "zen",
         title = "^.*Extension:.*",
     },
     tile = false,
@@ -47,7 +47,7 @@ hl.window_rule({
 
 -- Open maximized as default
 -- hl.window_rule({
---     match = { class = "zen" },
+--     match = { class = "kitty" },
 --     maximize = true,
 -- 	min_size = {"monitor_w * 0.5", "monitor_h"},
 -- })
@@ -113,9 +113,9 @@ hl.window_rule({
 --     rounding    = 0,
 -- })
 
-hl.workspace_rule({ workspace = "1", persistent = true })
-hl.workspace_rule({ workspace = "2", persistent = true })
-hl.workspace_rule({ workspace = "3", persistent = true, default = true })
+hl.workspace_rule({ workspace = "1", default_name = "gaming", persistent = true, layout = "monocle" })
+hl.workspace_rule({ workspace = "2", default_name = "focus", persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "3", default_name = "multitask", persistent = true, default = true })
 hl.workspace_rule({ workspace = "4", persistent = true })
 hl.workspace_rule({ workspace = "5", persistent = true })
 
@@ -130,7 +130,8 @@ hl.config({
 -- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
 hl.config({
     master = {
-        new_status = "master",
+        new_status = "slave",
+        new_status = "true",
     },
 })
 

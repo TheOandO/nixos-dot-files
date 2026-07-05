@@ -20,7 +20,7 @@ hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(ipc .. " panel-toggle wallpaper"))
-hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(ipc .. " settings-open"))
+hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd(ipc .. " settings-open"))
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(ipc .. " panel-toggle clipboard"))
 
 
@@ -56,29 +56,32 @@ hl.bind("ALT + TAB", hl.dsp.exec_cmd(ipc .. " window-switcher"))
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
+    hl.bind(mainMod .. " + " .. key,           hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + ALT + " .. key,     hl.dsp.window.move({ workspace = i }))
     end
 
-    -- Example special workspace (scratchpad)
-    -- hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-    -- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + Z" ,      hl.dsp.focus({ workspace = "name:gaming" }))
+hl.bind(mainMod .. " + ALT + Z", hl.dsp.window.move({ workspace = "name:gaming" }))
+hl.bind(mainMod .. " + X" ,      hl.dsp.focus({ workspace = "name:focus" }))
+hl.bind(mainMod .. " + ALT + X", hl.dsp.window.move({ workspace = "name:focus" }))
+hl.bind(mainMod .. " + C" ,      hl.dsp.focus({ workspace = "3" }))
+hl.bind(mainMod .. " + ALT + C", hl.dsp.window.move({ workspace = "3" }))
 
-    -- Scroll through existing workspaces with mainMod + scroll
-    hl.bind(mainMod .. " + ALT + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
-    hl.bind(mainMod .. " + ALT + mouse_down",   hl.dsp.focus({ workspace = "e-1" }))
-    hl.bind(mainMod .. " + mouse_up", hl.dsp.layout("move +col"))
-    hl.bind(mainMod .. " + mouse_down", hl.dsp.layout("move -col"))
-    hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "e+1" }))
-    hl.bind(mainMod .. " + SHIFT + mouse_down",   hl.dsp.window.move({ workspace = "e-1" }))
+-- Scroll through existing workspaces with mainMod + scroll
+hl.bind(mainMod .. " + ALT + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + ALT + mouse_down",   hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.layout("move +col"))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.layout("move -col"))
+hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_down",   hl.dsp.window.move({ workspace = "e-1" }))
     -- Move/resize windows with mainMod + LMB/RMB and dragging
-    hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
-    hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
     -- Media keys
-    hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. " volume-up"))
-    hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. " volume-down"))
-    hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. " volume-mute"))
-    hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. " brightness-up"))
-    hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. " brightness-down"))
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. " volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. " volume-down"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. " volume-mute"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. " brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. " brightness-down"))
 
