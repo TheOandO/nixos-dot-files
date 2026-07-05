@@ -15,7 +15,43 @@ local suppressMaximizeRule = hl.window_rule({
 
     suppress_event = "maximize",
 })
-suppressMaximizeRule:set_enabled(false)
+-- suppressMaximizeRule:set_enabled(false)
+
+-- Exclude zen extension popups from maximizing
+hl.window_rule({
+    match = {
+        initial_class = "zen",
+        title = "^.*Extension:.*",
+    },
+    tile = false,
+    float = true,
+    maximize = false,
+    persistent_size = true,
+	move = {"monitor_w * 0.78", "(monitor_h * 0.775)"},
+	size = {"monitor_w * 0.2", "monitor_h * 0.4"},
+})
+
+hl.window_rule({
+    match = {
+        class = "zen",
+        title = "^Picture-in-Picture",
+    },
+    tile = false,
+    float = true,
+    maximize = false,
+	move = {"monitor_w * 0.78", "(monitor_h * 0.775)"},
+	persistent_size = true,
+	size = {"monitor_w * 0.2", "monitor_h * 0.2"},
+	stay_focused = false,
+})
+
+-- Open maximized as default
+-- hl.window_rule({
+--     match = { class = "zen" },
+--     maximize = true,
+-- 	min_size = {"monitor_w * 0.5", "monitor_h"},
+-- })
+
 
 hl.window_rule({
     -- Fix some dragging issues with XWayland
@@ -57,13 +93,6 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
-})
-
-hl.window_rule({
-	  match = {
-	  	class = ".*"
-	  },
-	maximize = true,
 })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
@@ -109,6 +138,6 @@ hl.config({
 hl.config({
     scrolling = {
         fullscreen_on_one_column = true,
-        direction = "down",
+        direction = "right",
     },
 })
