@@ -1,3 +1,6 @@
+[Icons]
+Theme=Nordic-green
+
 [ColorEffects:Disabled]
 ChangeSelectionColor=
 Color=56,56,56
@@ -133,7 +136,7 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [General]
-ColorSchemeHash=35c73fb379a4940e5f22982a33078640b27cf788
+ColorScheme=noctalia
 
 [KDE]
 ShowDeleteCommand=false

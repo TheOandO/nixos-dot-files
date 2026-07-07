@@ -1,1 +1,1 @@
-/nix/store/72811b07yvx001d7x5rnkiwfvsfivclh-home-manager-files/.config/fish/functions/rebuild.fish
+/nix/store/mcid68wc2a58k4ha5f6qdpdm21vl71qy-home-manager-files/.config/fish/functions/rebuild.fish
