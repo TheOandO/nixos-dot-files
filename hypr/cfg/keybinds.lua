@@ -38,10 +38,10 @@ hl.bind(mainMod .. "+ SHIFT + F",       hl.dsp.window.fullscreen({ mode = "fulls
 hl.bind(mainMod .. " + J",              hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left",           hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + right",          hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + up",             hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + down",           hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + left",           hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + right",          hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + up",             hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + down",           hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + CTRL + left",    hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + CTRL + right",   hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + CTRL + up",      hl.dsp.focus({ direction = "up" }))
@@ -77,8 +77,8 @@ hl.bind(mainMod .. " + mouse_up",             hl.dsp.focus({ workspace = "e+1" }
 hl.bind(mainMod .. " + mouse_down",           hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + ALT + mouse_up",       hl.dsp.layout("move +col"))
 hl.bind(mainMod .. " + ALT + mouse_down",     hl.dsp.layout("move -col"))
-hl.bind(mainMod .. " + ALT + right",       hl.dsp.layout("move +col"))
-hl.bind(mainMod .. " + ALT + left",     hl.dsp.layout("move -col"))
+hl.bind(mainMod .. " + ALT + right",          hl.dsp.layout("move +col"))
+hl.bind(mainMod .. " + ALT + left",           hl.dsp.layout("move -col"))
 hl.bind(mainMod .. " + SHIFT + mouse_up",     hl.dsp.window.move({ workspace = "e+1" }))
 hl.bind(mainMod .. " + SHIFT + mouse_down",   hl.dsp.window.move({ workspace = "e-1" }))
 

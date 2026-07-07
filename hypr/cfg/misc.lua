@@ -18,7 +18,7 @@ hl.config({
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.env("QT_QPA_PLATFORM", "wayland")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
-hl.env("QT_STYLE_OVERRIDE", "Kvantum")
+hl.env("QT_STYLE_OVERRIDE", "kvantum")
 hl.env("HYPRCURSOR_SIZE", "20")
 hl.env("XCURSOR_SIZE", "20")
 hl.env("XDG_DATA_DIRS", "$XDG_DATA_DIRS:/run/current-system/sw/share")
