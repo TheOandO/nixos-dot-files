@@ -15,6 +15,24 @@ local browser     = "zen"
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 local ipc = "noctalia msg"
 
+local function layout_bind(bind_table)
+    return function ()
+        local workspace = hl.get_active_special_workspace() or
+                          hl.get_active_workspace()
+
+        if not workspace then
+            return
+        end
+
+        local layout = workspace.tiled_layout
+                
+        if bind_table[layout] then
+            hl.dispatch(bind_table[layout])
+        end
+    end
+end
+
+
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Space",          hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + A",              hl.dsp.exec_cmd(browser))
@@ -52,15 +70,15 @@ hl.bind(mainMod .. " + SHIFT + up",     hl.dsp.window.move({ direction = "up" })
 hl.bind(mainMod .. " + SHIFT + down",   hl.dsp.window.move({ direction = "down" }))
 hl.bind("ALT + TAB",                    hl.dsp.exec_cmd(ipc .. " window-switcher"))
 
-
 -- Switch workspaces with mainMod + [0-9]
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
+-- Move active window to a workspace with mainMod + ALT + [0-9]
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
     hl.bind(mainMod .. " + " .. key,           hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + ALT + " .. key,     hl.dsp.window.move({ workspace = i }))
     end
 
+-- Switch first 5 workspaces with mainMod + [Z,X,C,V,B]
 hl.bind(mainMod .. " + Z" ,             hl.dsp.focus({ workspace = "name:gaming" }))
 hl.bind(mainMod .. " + ALT + Z",        hl.dsp.window.move({ workspace = "name:gaming" }))
 hl.bind(mainMod .. " + X" ,             hl.dsp.focus({ workspace = "name:focus" }))
@@ -72,13 +90,54 @@ hl.bind(mainMod .. " + ALT + V",        hl.dsp.window.move({ workspace = "4" }))
 hl.bind(mainMod .. " + B" ,             hl.dsp.focus({ workspace = "5" }))
 hl.bind(mainMod .. " + ALT + B",        hl.dsp.window.move({ workspace = "5" }))
 
+-- Change active workspace's layout
+hl.bind("SUPER + tab", function ()
+    local layouts     = { "scrolling", "dwindle", "master", "monocle" }
+    local workspace   = hl.get_active_workspace()
+	if hl.get_active_special_workspace() then
+		workspace = hl.get_active_special_workspace()
+	end
+
+    local next_layout = "dwindle"
+
+    if not workspace then
+        return
+    end
+
+    for i = 1, #layouts do
+        if layouts[i] == workspace.tiled_layout then
+            local next_layout_idx = (i % #layouts) + 1
+            next_layout = layouts[next_layout_idx]
+            break
+        end
+    end
+
+	if workspace.special then
+		hl.workspace_rule({ workspace = tostring(workspace.name), layout = next_layout })
+	else
+		hl.workspace_rule({ workspace = tostring(workspace.id), layout = next_layout })
+	end
+end)
+
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_up",             hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_down",           hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + ALT + mouse_up",       hl.dsp.layout("move +col"))
-hl.bind(mainMod .. " + ALT + mouse_down",     hl.dsp.layout("move -col"))
-hl.bind(mainMod .. " + ALT + right",          hl.dsp.layout("move +col"))
-hl.bind(mainMod .. " + ALT + left",           hl.dsp.layout("move -col"))
+hl.bind(mainMod .. " + ALT + mouse_up",       layout_bind({
+															scrolling = hl.dsp.layout("move +col"),
+															monocle = hl.dsp.layout("cycleprev"),
+															}))
+hl.bind(mainMod .. " + ALT + mouse_down",     layout_bind({
+															scrolling = hl.dsp.layout("move -col"),
+															monocle = hl.dsp.layout("cyclenext"),
+															}))
+hl.bind(mainMod .. " + ALT + right",          layout_bind({
+															scrolling = hl.dsp.layout("move +col"),
+															monocle = hl.dsp.layout("cycleprev"),
+															}))
+hl.bind(mainMod .. " + ALT + left",           layout_bind({
+															scrolling = hl.dsp.layout("move -col"),
+															monocle = hl.dsp.layout("cyclenext"),
+															}))
 hl.bind(mainMod .. " + SHIFT + mouse_up",     hl.dsp.window.move({ workspace = "e+1" }))
 hl.bind(mainMod .. " + SHIFT + mouse_down",   hl.dsp.window.move({ workspace = "e-1" }))
 
