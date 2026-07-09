@@ -15,7 +15,7 @@ local suppressMaximizeRule = hl.window_rule({
 
     suppress_event = "maximize",
 })
--- suppressMaximizeRule:set_enabled(false)
+suppressMaximizeRule:set_enabled(false)
 
 -- Exclude zen extension popups from maximizing
 hl.window_rule({

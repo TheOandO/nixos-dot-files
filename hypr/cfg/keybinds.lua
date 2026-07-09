@@ -6,7 +6,7 @@
 local terminal    = "kitty"
 local fileManager = "dolphin"
 local browser     = "zen"
-
+local textEditor  = "kate"
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -35,19 +35,20 @@ end
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Space",          hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + A",              hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + Q",              hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + S",              hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
-hl.bind(mainMod .. " + W",              hl.dsp.exec_cmd(ipc .. " panel-toggle wallpaper"))
+hl.bind(mainMod .. " + SHIFT + W",      hl.dsp.exec_cmd(ipc .. " panel-toggle wallpaper"))
 hl.bind(mainMod .. " + SHIFT + X",      hl.dsp.exec_cmd(ipc .. " settings-open"))
 hl.bind(mainMod .. " + SHIFT + V",      hl.dsp.exec_cmd(ipc .. " panel-toggle clipboard"))
 hl.bind(mainMod .. " + SHIFT + S",      hl.dsp.exec_cmd(ipc .. " screenshot-region"))
+hl.bind(mainMod .. " + SHIFT + Q",      hl.dsp.exec_cmd(ipc .. " panel-toggle session"))
 
-
-local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+local closeWindowBind = hl.bind(mainMod .. " + Escape", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + Escape",         hl.dsp.exec_cmd(ipc .. " panel-toggle session"))
 hl.bind(mainMod .. " + SHIFT + Escape", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E",              hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + W",              hl.dsp.exec_cmd(textEditor))
+
 hl.bind(mainMod .. " + D",              hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R",              hl.dsp.exec_cmd(ipc .. " config-reload"))
 hl.bind(mainMod .. " + P",              hl.dsp.window.pseudo())
