@@ -1,0 +1,16 @@
+services:
+    llamacpp:
+        image: ghcr.io/ggml-org/llama.cpp:server-vulkan
+        container_name: llamacpp
+        restart: unless-stopped
+        ports:
+            - 8080:8080
+        volumes:
+            - ./models:/models   # <-- host path : container path
+        devices:
+            - /dev/dri
+        environment:
+            # - HSA_OVERRIDE_GFX_VERSION=10.3.0
+            - LLAMA_ARG_MODELS_DIR=/models
+            - LLAMA_ARG_PORT=8080
+            - LLAMA_ARG_MODELS_PRESET=/models/presets.ini
