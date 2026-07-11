@@ -49,7 +49,7 @@ hl.window_rule({
 -- hl.window_rule({
 --     match = { class = "kitty" },
 --     maximize = true,
--- 	min_size = {"monitor_w * 0.5", "monitor_h"},
+-- 	max_size = {"monitor_w * 0.5", "monitor_h"},
 -- })
 
 
@@ -113,9 +113,9 @@ hl.window_rule({
 --     rounding    = 0,
 -- })
 
-hl.workspace_rule({ workspace = "1", default_name = "gaming", persistent = true, layout = "monocle" })
+hl.workspace_rule({ workspace = "1", default_name = "multitask", persistent = true, default = true})
 hl.workspace_rule({ workspace = "2", default_name = "focus", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "3", default_name = "multitask", persistent = true, default = true })
+hl.workspace_rule({ workspace = "3", default_name = "gaming", persistent = true, layout = "monocle"  })
 hl.workspace_rule({ workspace = "4", persistent = true })
 hl.workspace_rule({ workspace = "5", persistent = true })
 

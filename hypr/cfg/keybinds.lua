@@ -80,12 +80,12 @@ for i = 1, 10 do
     end
 
 -- Switch first 5 workspaces with mainMod + [Z,X,C,V,B]
-hl.bind(mainMod .. " + Z" ,             hl.dsp.focus({ workspace = "name:gaming" }))
-hl.bind(mainMod .. " + ALT + Z",        hl.dsp.window.move({ workspace = "name:gaming" }))
+hl.bind(mainMod .. " + Z" ,             hl.dsp.focus({ workspace = "name:multitask" }))
+hl.bind(mainMod .. " + ALT + Z",        hl.dsp.window.move({ workspace = "name:multitask" }))
 hl.bind(mainMod .. " + X" ,             hl.dsp.focus({ workspace = "name:focus" }))
 hl.bind(mainMod .. " + ALT + X",        hl.dsp.window.move({ workspace = "name:focus" }))
-hl.bind(mainMod .. " + C" ,             hl.dsp.focus({ workspace = "3" }))
-hl.bind(mainMod .. " + ALT + C",        hl.dsp.window.move({ workspace = "3" }))
+hl.bind(mainMod .. " + C" ,             hl.dsp.focus({ workspace = "name:gaming" }))
+hl.bind(mainMod .. " + ALT + C",        hl.dsp.window.move({ workspace = "name:gaming" }))
 hl.bind(mainMod .. " + V" ,             hl.dsp.focus({ workspace = "4" }))
 hl.bind(mainMod .. " + ALT + V",        hl.dsp.window.move({ workspace = "4" }))
 hl.bind(mainMod .. " + B" ,             hl.dsp.focus({ workspace = "5" }))
