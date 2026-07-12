@@ -11,7 +11,10 @@
 local suppressMaximizeRule = hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
     name  = "suppress-maximize-events",
-    match = { class = ".*" },
+    match = {
+        class = ".*",
+        float = false,
+    },
 
     suppress_event = "maximize",
 })
@@ -29,6 +32,7 @@ hl.window_rule({
     persistent_size = true,
 	move = {"monitor_w * 0.78", "(monitor_h * 0.775)"},
 	size = {"monitor_w * 0.2", "monitor_h * 0.4"},
+    suppress_event = "maximize",
 })
 
 hl.window_rule({
@@ -43,6 +47,7 @@ hl.window_rule({
 	persistent_size = true,
 	size = {"monitor_w * 0.2", "monitor_h * 0.2"},
 	stay_focused = false,
+    suppress_event = "maximize",
 })
 
 -- Open maximized as default

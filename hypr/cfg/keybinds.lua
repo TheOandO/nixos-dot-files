@@ -69,7 +69,10 @@ hl.bind(mainMod .. " + SHIFT + left",   hl.dsp.window.move({ direction = "left" 
 hl.bind(mainMod .. " + SHIFT + right",  hl.dsp.window.move({ direction = "right" }))
 hl.bind(mainMod .. " + SHIFT + up",     hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + down",   hl.dsp.window.move({ direction = "down" }))
-hl.bind("ALT + TAB",                    hl.dsp.exec_cmd(ipc .. " window-switcher"))
+
+-- hl.bind("ALT + TAB",                    hl.dsp.exec_cmd(ipc .. " window-switcher"))
+hl.bind("ALT + Tab",                    hl.dsp.exec_cmd("snappy-switcher next --mod alt"))
+hl.bind("SUPER + TAB",                  hl.dsp.exec_cmd("snappy-switcher next --workspace --mod super"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + ALT + [0-9]
@@ -92,7 +95,7 @@ hl.bind(mainMod .. " + B" ,             hl.dsp.focus({ workspace = "5" }))
 hl.bind(mainMod .. " + ALT + B",        hl.dsp.window.move({ workspace = "5" }))
 
 -- Change active workspace's layout
-hl.bind("SUPER + tab", function ()
+hl.bind("SUPER + G", function ()
     local layouts     = { "scrolling", "dwindle", "master", "monocle" }
     local workspace   = hl.get_active_workspace()
 	if hl.get_active_special_workspace() then
