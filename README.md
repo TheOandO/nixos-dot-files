@@ -13,7 +13,6 @@ My personal dotfiles for my NixOS setup.
 | `noctalia/` | Noctalia desktop shell config |
 | `qt5ct/` | Qt5 theme settings |
 | `qt6ct/` | Qt6 theme settings |
-| `fish/` | Fish shell variables, functions, and completions |
 | `noctalia-config.toml` | Noctalia main config file |
 
 ## Usage
