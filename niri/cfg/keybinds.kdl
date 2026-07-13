@@ -9,14 +9,14 @@ binds {
     MOD+SHIFT+ESCAPE                     { show-hotkey-overlay; }
 
     // ─── Applications ───
-    MOD+SPACE                          hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }
-    MOD+S                     hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
-    MOD+B                               hotkey-overlay-title="Open Browser: Zen" { spawn "zen"; }
-    MOD+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
-    MOD+SHIFT+Q                           hotkey-overlay-title="Session: noctalia session" { spawn-sh "noctalia msg panel-toggle session"; }
-    MOD+SHIFT+W                           hotkey-overlay-title="Wallpaper Selector" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
+    MOD+SPACE                                hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }
+    MOD+S                                    hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    MOD+Q                                    hotkey-overlay-title="Open Browser: Zen" { spawn "zen"; }
+    MOD+ALT+L                                hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
+    MOD+SHIFT+Q                              hotkey-overlay-title="Session: noctalia session" { spawn-sh "noctalia msg panel-toggle session"; }
+    MOD+SHIFT+W                              hotkey-overlay-title="Wallpaper Selector" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
     // Please choose your own file manager.
-    MOD+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
+    MOD+E                                    hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
 
     // ─── Audio Controls ───
     XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
@@ -26,7 +26,7 @@ binds {
     XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
     XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
     // ─── Window Movement and Focus ───
-    MOD+Q                               { close-window; }
+    MOD+ESCAPE                               { close-window; }
 
     MOD+CTRL+LEFT                            { focus-column-left; }
     MOD+CTRL+RIGHT                           { focus-column-right; }
@@ -74,41 +74,50 @@ binds {
     MOD+8                               { focus-workspace 8; }
     MOD+9                               { focus-workspace 9; }
 
-    MOD+CTRL+1                          { move-column-to-workspace 1; }
-    MOD+CTRL+2                          { move-column-to-workspace 2; }
-    MOD+CTRL+3                          { move-column-to-workspace 3; }
-    MOD+CTRL+4                          { move-column-to-workspace 4; }
-    MOD+CTRL+5                          { move-column-to-workspace 5; }
-    MOD+CTRL+6                          { move-column-to-workspace 6; }
-    MOD+CTRL+7                          { move-column-to-workspace 7; }
-    MOD+CTRL+8                          { move-column-to-workspace 8; }
-    MOD+CTRL+9                          { move-column-to-workspace 9; }
+    MOD+Z                               { focus-workspace 1; }
+    MOD+X                               { focus-workspace 2; }
+    MOD+C                               { focus-workspace 3; }
+    MOD+ALT+Z                          { move-column-to-workspace 1; }
+    MOD+ALT+X                          { move-column-to-workspace 2; }
+    MOD+ALT+C                          { move-column-to-workspace 3; }
+
+    MOD+ALT+1                          { move-column-to-workspace 1; }
+    MOD+ALT+2                          { move-column-to-workspace 2; }
+    MOD+ALT+3                          { move-column-to-workspace 3; }
+    MOD+ALT+4                          { move-column-to-workspace 4; }
+    MOD+ALT+5                          { move-column-to-workspace 5; }
+    MOD+ALT+6                          { move-column-to-workspace 6; }
+    MOD+ALT+7                          { move-column-to-workspace 7; }
+    MOD+ALT+8                          { move-column-to-workspace 8; }
+    MOD+ALT+9                          { move-column-to-workspace 9; }
 
     MOD+TAB                             { focus-workspace-previous; }
 
     // ─── Layout Controls ───
     MOD+CTRL+F                          { expand-column-to-available-width; }
-    MOD+C                               { center-column; }
-    MOD+CTRL+C                          { center-visible-columns; }
-    MOD+LEFT                           { set-column-width "-10%"; }
+    MOD+D                               { center-column; }
+    MOD+CTRL+D                          { center-visible-columns; }
+    MOD+LEFT                            { set-column-width "-10%"; }
     MOD+RIGHT                           { set-column-width "+10%"; }
-    MOD+UP                     { set-window-height "-10%"; }
-    MOD+DOWN                     { set-window-height "+10%"; }
-
+    MOD+UP                              { set-window-height "-10%"; }
+    MOD+DOWN                            { set-window-height "+10%"; }
+	MOD+ALT+UP						    { move-column-to-workspace-up; }
+	MOD+ALT+DOWN						{ move-column-to-workspace-down; }
+		
     // ─── Modes ───
     MOD+T                               { toggle-window-floating; }
     MOD+F                               { fullscreen-window; }
     MOD+W                               { toggle-column-tabbed-display; }
 
     // ─── Screenshots ───
-    Mod+SHIFT+S                        { screenshot; }
+    Mod+SHIFT+S                           { screenshot; }
     //CTRL+SHIFT+2                        { screenshot-screen; }
     //CTRL+SHIFT+3                        { screenshot-window; }
 
     // ─── Emergency Escape Key ───
     // Use this when a fullscreen app blocks your keybinds.
     // It disables any active keyboard shortcut inhibitor, restoring control.
-    MOD+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    MOD+ALT+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // ─── Exit / Power ───
     CTRL+ALT+DELETE                     { quit; } // Also quits Niri

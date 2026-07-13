@@ -19,7 +19,7 @@
     }
 
 	window-rule {
-    		match app-id="zen|obsidian|vscodium|libreoffice" 
+    		match app-id="zen|obsidian|vscode|libreoffice" 
     		exclude title=r#"^Extension: "#  
     		open-maximized true
 	}
@@ -48,3 +48,8 @@
 	    open-focused false
 	    default-floating-position x=16 y=50 relative-to="top-right";
 	}
+
+	workspace "1"
+	workspace "2"
+	workspace "3"
+
