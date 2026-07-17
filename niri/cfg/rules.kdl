@@ -5,7 +5,8 @@
 	    background-effect {
 	        blur true
 	    }
-        opacity 0.95
+        opacity 0.9
+
     }
 
 	window-rule {
