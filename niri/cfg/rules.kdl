@@ -20,7 +20,7 @@
     }
 
 	window-rule {
-    		match app-id="zen|obsidian|vscode|libreoffice" 
+    		match app-id="zen|obsidian|vscode|libreoffice|org.gnome.Nautilus|Heroic Games Launcher" 
     		exclude title=r#"^Extension: "#  
     		open-maximized true
 	}
