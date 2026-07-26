@@ -12,7 +12,7 @@ binds {
     MOD+SPACE               cooldown-ms=250  hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }
     MOD+S                   cooldown-ms=250  hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
     MOD+Q                   cooldown-ms=250  hotkey-overlay-title="Open Browser: Zen" { spawn "zen"; }
-    MOD+ALT+L                                hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
+    MOD+SHIFT+L                                hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
     MOD+SHIFT+Q                              hotkey-overlay-title="Session: noctalia session" { spawn-sh "noctalia msg panel-toggle session"; }
     MOD+SHIFT+W                              hotkey-overlay-title="Wallpaper Selector" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
     // Please choose your own file manager.
