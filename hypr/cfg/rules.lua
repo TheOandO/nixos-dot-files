@@ -118,11 +118,10 @@ hl.window_rule({
 --     rounding    = 0,
 -- })
 
-hl.workspace_rule({ workspace = "1", default_name = "multitask", persistent = true, default = true})
-hl.workspace_rule({ workspace = "2", default_name = "focus", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "3", default_name = "gaming", persistent = true, layout = "monocle"  })
-hl.workspace_rule({ workspace = "4", persistent = true })
-hl.workspace_rule({ workspace = "5", persistent = true })
+hl.workspace_rule({ workspace = "s[false]", layout = "scrolling" })
+hl.workspace_rule({ workspace = "1", persistent = true, default = true})
+hl.workspace_rule({ workspace = "2", persistent = true})
+hl.workspace_rule({ workspace = "3", persistent = true})
 
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
