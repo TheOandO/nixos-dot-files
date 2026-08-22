@@ -10,3 +10,6 @@ require("cfg.misc")
 
 -- For Noctalia Color templates
 require("scheme.current")
+
+-- HyprMod managed settings
+require("hyprland-gui")

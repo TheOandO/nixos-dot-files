@@ -17,8 +17,9 @@ hl.config({
 
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.env("QT_QPA_PLATFORM", "wayland")
-hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
--- hl.env("QT_STYLE_OVERRIDE", "kvantum")
+-- hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("ADW_DISABLE_PORTAL", "1")
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("HYPRCURSOR_SIZE", "20")
 hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
