@@ -14,6 +14,7 @@
 -- end)
 
 hl.on("hyprland.start", function()
+	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("caelestia-shell -d")
 	hl.exec_cmd("snappy-switcher --daemon")
 end)

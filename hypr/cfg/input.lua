@@ -24,10 +24,18 @@ hl.config({
 
 hl.gesture({
 	fingers = 3,
-	direction = "vertical",
+	direction = "horizontal",
 	action = "workspace",
 	workspace_swipe_invert = false
 })
+
+hl.gesture({
+	fingers = 3,
+	direction = "vertical",
+	action = "scroll_move",
+})
+
+
 
 -- Example per-device config
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
