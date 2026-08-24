@@ -12,7 +12,11 @@ hl.config({
     },
     misc = {
         disable_splash_rendering = true,
+        force_default_wallpaper = 0,
         vrr = 1,
+    },
+    scrolling = {
+        direction = "right",
     },
     xwayland = {
         force_zero_scaling = true,
