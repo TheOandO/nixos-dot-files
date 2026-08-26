@@ -33,11 +33,12 @@ hl.env("XDG_DATA_DIRS", "$XDG_DATA_DIRS:/run/current-system/sw/share")
 -- Please note permission changes here require a Hyprland restart and are not applied on-the-fly
 -- for security reasons
 
--- hl.config({
---   ecosystem = {
---     enforce_permissions = true,
---   },
--- })
+hl.config({
+   ecosystem = {
+     	no_update_news = true,
+		no_donation_nag = true,
+   },
+})
 
 -- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
 -- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
