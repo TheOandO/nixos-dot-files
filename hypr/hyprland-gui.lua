@@ -6,9 +6,17 @@ hl.config({
         enable_hyprcursor = false,
     },
     ecosystem = {
-        enforce_permissions = true,
+        enforce_permissions = false,
         no_donation_nag = true,
         no_update_news = true,
+    },
+    general = {
+        col = {
+            active_border = {
+                colors = {"rgba(33ccffee)"},
+                angle = 45,
+            },
+        },
     },
     misc = {
         disable_splash_rendering = true,

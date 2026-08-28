@@ -16,15 +16,21 @@ hl.config({
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
+
 hl.env("QT_QPA_PLATFORM", "wayland")
--- hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("QT_QPA_PLATFORMTHEME", "qtengine")
 hl.env("ADW_DISABLE_PORTAL", "1")
-hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+
 hl.env("HYPRCURSOR_SIZE", "20")
 hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_SIZE", "20")
+
 hl.env("XDG_DATA_DIRS", "$XDG_DATA_DIRS:/run/current-system/sw/share")
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("XDG_SESSION_DESKTOP", "Hyprland")
+
 
 -----------------------
 ----- PERMISSIONS -----
@@ -34,12 +40,12 @@ hl.env("XDG_DATA_DIRS", "$XDG_DATA_DIRS:/run/current-system/sw/share")
 -- Please note permission changes here require a Hyprland restart and are not applied on-the-fly
 -- for security reasons
 
--- hl.config({
---   ecosystem = {
---     enforce_permissions = true,
---   },
--- })
+hl.config({
+  ecosystem = {
+    enforce_permissions = true,
+  },
+})
 
--- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
--- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
--- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
+hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
+hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
+hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
