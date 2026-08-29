@@ -13,7 +13,7 @@ local textEditor  = "gedit"
 ---------------------
 
 local 	mainMod = "SUPER" -- Sets "Windows" key as main modifier
--- local ipc = "noctalia msg"
+local ipc = "noctalia msg"
 local   volumeStep                 = 10
 local   volumeMax                  = 100
 
@@ -52,11 +52,12 @@ end
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Space",          hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q",              hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + S",              hl.dsp.global("caelestia:launcher"))
-hl.bind(mainMod .. " + SHIFT + W",      hl.dsp.global("caelestia:nexus"))
-hl.bind(mainMod .. " + SHIFT + X",      hl.dsp.global("caelestia:utilities"))
-hl.bind(mainMod .. " + SHIFT + S",      hl.dsp.exec_cmd("caelestia:screenshotFreeze"))
-hl.bind(mainMod .. " + SHIFT + Q",      hl.dsp.global("caelestia:session"))
+hl.bind(mainMod .. " + S",              hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
+hl.bind(mainMod .. " + SHIFT + W",      hl.dsp.exec_cmd(ipc .. " panel-toggle wallpaper"))
+hl.bind(mainMod .. " + SHIFT + X",      hl.dsp.exec_cmd(ipc .. " settings-open"))
+hl.bind(mainMod .. " + SHIFT + V",      hl.dsp.exec_cmd(ipc .. " panel-toggle clipboard"))
+hl.bind(mainMod .. " + SHIFT + S",      hl.dsp.exec_cmd(ipc .. " screenshot-region"))
+hl.bind(mainMod .. " + SHIFT + Q",      hl.dsp.exec_cmd(ipc .. " panel-toggle session"))
 hl.bind(mainMod .. " + SHIFT + L",      hl.dsp.global("caelestia:lock"))
 
 
@@ -67,7 +68,7 @@ hl.bind(mainMod .. " + E",              hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + W",              hl.dsp.exec_cmd(textEditor))
 
 hl.bind(mainMod .. " + D",              hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R",              hl.dsp.exec_cmd("qs -c caelestia kill; sleep .1; caelestia shell -d"))
+hl.bind(mainMod .. " + R",              hl.dsp.exec_cmd(ipc .. " config-reload"))
 hl.bind(mainMod .. " + P",              hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F",              hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle"}))
 hl.bind(mainMod .. "+ SHIFT + F",       hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle"}))
@@ -171,14 +172,9 @@ hl.bind(mainMod .. " + mouse:272", 	hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", 	hl.dsp.window.resize(), { mouse = true })
 
     -- Media keys
-hl.bind("XF86AudioRaiseVolume",   	hl.dsp.exec_cmd(
-									    "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l " ..
-									    (volumeMax / 100) .. " @DEFAULT_AUDIO_SINK@ " .. volumeStep .. "%+"
-									), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume",    	hl.dsp.exec_cmd(
-									    "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ " .. volumeStep .. "%-"
-									), { locked = true, repeating = true })
-hl.bind("XF86AudioMute",           	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
-hl.bind("XF86MonBrightnessUp",     	hl.dsp.global("caelestia:brightnessUp"), { locked = true })
-hl.bind("XF86MonBrightnessDown",   	hl.dsp.global("caelestia:brightnessDown"), { locked = true })
+hl.bind("XF86AudioRaiseVolume",    hl.dsp.exec_cmd(ipc .. " volume-up"))
+hl.bind("XF86AudioLowerVolume",    hl.dsp.exec_cmd(ipc .. " volume-down"))
+hl.bind("XF86AudioMute",           hl.dsp.exec_cmd(ipc .. " volume-mute"))
+hl.bind("XF86MonBrightnessUp",     hl.dsp.exec_cmd(ipc .. " brightness-up"))
+hl.bind("XF86MonBrightnessDown",   hl.dsp.exec_cmd(ipc .. " brightness-down"))
 

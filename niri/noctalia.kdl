@@ -12,9 +12,6 @@ layout {
         urgent-color   "#fd4663"
     }
 
-    shadow {
-        color "#1a1c2370"
-    }
 
     tab-indicator {
         active-color   "#8b98c1"

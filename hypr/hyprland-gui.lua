@@ -11,9 +11,10 @@ hl.config({
         no_update_news = true,
     },
     general = {
+        border_size = 2,
         col = {
             active_border = {
-                colors = {"rgba(33ccffee)"},
+                colors = {"rgba(ffffffff)"},
                 angle = 45,
             },
         },

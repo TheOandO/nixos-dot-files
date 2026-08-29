@@ -17,7 +17,7 @@ binds {
     MOD+SHIFT+W                              hotkey-overlay-title="Wallpaper Selector" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
     // Please choose your own file manager.
     MOD+E                                    hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
-
+MoD+SHIFT+X hotkey-overlay-title="Noctalia: Setting" { spawn-sh "noctalia msg settings-toggle"; }
     // ─── Audio Controls ───
     XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
     XF86AUDIOLOWERVOLUME                allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
