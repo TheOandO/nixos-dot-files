@@ -1,43 +1,106 @@
+[backdrop]
+blur_intensity = 0.0
+
 [bar]
-order = [ "main" ]
+order = [ "main", "nobar" ]
 
     [bar.main]
     background_opacity = 0.59999998658895493
-    center = [ "active_window" ]
+    center = [ "workspaces" ]
+    concave_edge_corners = false
     contact_shadow = true
-    end = [ "tray", "privacy", "group:g1", "battery", "group:g3" ]
-    margin_edge = 0
+    enabled = false
+    end = [ "tray", "privacy", "group:g1", "group:g3" ]
+    margin_edge = 6
+    margin_ends = 400
     padding = 8
     panel_overlap = 2
-    radius = 10
+    radius = 16
     shadow = false
-    start = [ "workspaces", "group:g2" ]
-    thickness = 28
-    widget_spacing = 10
+    start = [ "group:g2", "battery" ]
+    thickness = 26
+    widget_spacing = 6
 
         [[bar.main.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
         enabled = true
         fill = "surface_variant"
         id = "g2"
-        members = [ "cpu", "power_profile", "ram" ]
+        members = [ "cpu", "ram" ]
         opacity = 0.0
         padding = 6.0
 
         [[bar.main.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
         enabled = true
         fill = "surface_variant"
         id = "g1"
-        members = [ "network", "bluetooth", "volume" ]
+        members = [ "volume", "network" ]
         opacity = 0.0
         padding = 6.0
 
         [[bar.main.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
         enabled = true
         fill = "surface_variant"
         id = "g3"
-        members = [ "date", "notifications" ]
+        members = [ "date" ]
         opacity = 0.0
         padding = 6.0
+
+    [bar.nobar]
+    background_opacity = 0.0
+    capsule = true
+    capsule_fill = "on_primary"
+    capsule_foreground = "primary"
+    capsule_padding = 11.0
+    capsule_thickness = 0.99999998137354851
+    center = [ "workspaces" ]
+    end = [ "group:g2", "group:g1" ]
+    margin_edge = 6
+    margin_ends = 0
+    panel_overlap = 2
+    radius = 8
+    shadow = false
+    start = [ "group:g3" ]
+    thickness = 27
+    widget_spacing = 8
+
+        [[bar.nobar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "on_primary"
+        foreground = "primary"
+        id = "g1"
+        members = [ "cpu", "ram", "separator", "weather", "clock", "notifications" ]
+        opacity = 1.0
+        padding = 11.0
+
+        [[bar.nobar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "on_primary"
+        foreground = "primary"
+        id = "g3"
+        members = [ "media", "audio_visualizer", "separator", "volume", "network", "battery" ]
+        opacity = 1.0
+        padding = 11.0
+
+        [[bar.nobar.capsule_group]]
+        accordion = true
+        accordion_direction = "end"
+        enabled = true
+        fill = "on_primary"
+        foreground = "primary"
+        id = "g2"
+        members = [ "tray", "privacy" ]
+        opacity = 1.0
+        padding = 11.0
 
 [control_center]
 hidden_tabs = [ "screen-time" ]
@@ -47,9 +110,10 @@ width = 600
 enabled = false
 
 [hooks]
-started = "noctalia msg session lock"
+started = ""
 
 [hot_corners]
+delay_ms = 250
 enabled = true
 
     [hot_corners.top_right]
@@ -80,6 +144,7 @@ auto_locate = true
 [lockscreen]
 allow_empty_password = true
 blur_intensity = 0.79999998211860657
+enabled = false
 fingerprint = false
 wallpaper = "/home/matty/Pictures/Wallpapers/max-suleimanov-dv-202.sync-conflict-20260613-201032-ON5JSGN.jpg"
 
@@ -94,11 +159,13 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-    box_height = 236.0
-    box_width = 720.0
+    box_height = 70.0
+    box_width = 400.0
     cx = 640.0
-    cy = 506.0
+    cy = 432.0
     output = "eDP-1"
+    placement_height = 800.0
+    placement_width = 1280.0
     rotation = 0.0
     type = "login_box"
 
@@ -109,12 +176,14 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
         center_password_text = true
         input_opacity = 1.0
         input_radius = 7.0
-        layout = "regular"
+        layout = "compact"
         show_caps_lock = true
-        show_keyboard_layout = true
+        show_keyboard_layout = false
         show_login_button = false
-        show_password_hint = false
+        show_media = true
         show_session_buttons = true
+        show_unlock_hint = false
+        show_weather = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 96.0
@@ -122,6 +191,8 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
     cx = 640.0
     cy = 288.0
     output = "eDP-1"
+    placement_height = 800.0
+    placement_width = 1280.0
     rotation = 0.0
     type = "clock"
 
@@ -138,6 +209,8 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
     cx = 640.0
     cy = 352.0
     output = "eDP-1"
+    placement_height = 800.0
+    placement_width = 1280.0
     rotation = 0.0
     type = "clock"
 
@@ -171,7 +244,7 @@ position_vertical = "center_right"
     wifi = false
 
 [plugins]
-enabled = [ "noctalia/wallhaven" ]
+enabled = [ "noctalia/wallhaven", "dotnetrob/cat" ]
 
     [[plugins.source]]
     auto_update = true
@@ -188,7 +261,7 @@ enabled = [ "noctalia/wallhaven" ]
 [shell]
 button_borders = false
 corner_radius_scale = 0.90000001341104507
-font_family = "0xProto Nerd Font"
+font_family = "CaskaydiaMono NF"
 input_borders = false
 polkit_agent = true
 settings_show_advanced = true
@@ -198,7 +271,7 @@ ui_scale = 1.1000000089406967
     speed = 1.4500000216066837
 
     [shell.launcher]
-    categories = false
+    categories = true
     session_search = true
 
         [shell.launcher.providers.calculator]
@@ -221,6 +294,7 @@ ui_scale = 1.1000000089406967
 
     [shell.screenshot]
     confirm_region = true
+    remember_last_region = true
 
     [shell.session]
     grid = true
@@ -229,21 +303,21 @@ ui_scale = 1.1000000089406967
         [[shell.session.actions]]
         action = "lock"
         countdown_seconds = 0.0
-        enabled = true
+        enabled = false
         shortcut = "1"
         variant = "default"
 
         [[shell.session.actions]]
         action = "logout"
         countdown_seconds = 0.0
-        enabled = false
+        enabled = true
         shortcut = "2"
         variant = "default"
 
         [[shell.session.actions]]
         action = "lock_and_suspend"
         countdown_seconds = 0.0
-        enabled = true
+        enabled = false
         shortcut = "3"
         variant = "default"
 
@@ -263,12 +337,14 @@ ui_scale = 1.1000000089406967
 
 [theme]
 builtin = "Catppuccin"
+mode = "dark"
 pure_black_dark = true
 source = "wallpaper"
+wallpaper_scheme = "soft"
 
     [theme.templates]
     builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "kitty", "niri", "qt" ]
-    community_ids = [ "zen-browser", "obsidian", "vscode" ]
+    community_ids = [ "pear-desktop", "zen-browser", "obsidian", "vscode", "heroiclauncher", "steam", "fastfetch" ]
 
 [wallpaper]
 directory = "/home/matty/Pictures/Wallpapers"
@@ -284,14 +360,17 @@ transition_duration = 600
     path = "/home/matty/Pictures/Wallpapers/max-suleimanov-dv-202.sync-conflict-20260613-201032-ON5JSGN.jpg"
 
 [widget.active_window]
-anchor = true
-max_length = 170
+anchor = false
+display = "icon_only"
+max_length = 40
+min_length = 0
 
 [widget.audio_visualizer]
-bands = 31
+bands = 40
 color_2 = "on_primary"
+mirrored = false
 show_when_idle = true
-width = 91
+width = 60
 
 [widget.battery]
 display_mode = "graphic"
@@ -301,13 +380,17 @@ show_label = false
 scale = 1.2
 
 [widget.clock]
-format = "{:%H:%M}\\n_"
+format = "{:%H:%M |}"
 
 [widget.cpu]
 show_label = false
+show_value = false
 
 [widget.date]
 format = "{:%a|%H:%M}"
+
+[widget.media]
+album_art_only = true
 
 [widget.network]
 scale = 1.1000000000000001
@@ -325,6 +408,12 @@ icon_spacing = 8
 
 [widget.ram]
 show_label = false
+show_value = false
+
+[widget.separator]
+interactive = false
+text = "|"
+type = "text"
 
 [widget.volume]
 scale = 0.94999999999999996
@@ -332,8 +421,10 @@ show_label = false
 
 [widget.weather]
 show_condition = false
+show_temperature = false
 
 [widget.workspaces]
-active_pill_size = 1.6000000000000001
-capsule_radius = 7
-display = "none"
+active_pill_size = 2.0
+capsule_radius = "auto"
+empty_color = "tertiary"
+show_labels = false

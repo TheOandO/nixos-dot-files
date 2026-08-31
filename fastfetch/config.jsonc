@@ -1,62 +1,48 @@
 {
-    "display": {
-        "separator": " ",
-        "color": {
-            "keys": "blue",
-            "title": "red"
-        },
-        "key": {
-            "width": 20,
-            "type": "both-1"
-        },
-        "bar": {
-            "width": 10,
-            "char": {
-                "elapsed": "■",
-                "total": "-"
-            }
-        },
-        "percent": {
-            "type": 9,
-            "color": {
-                "green": "green",
-                "yellow": "light_yellow",
-                "red": "light_red"
-            }
-        },
-        "disableLinewrap": true
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "small"
     },
-	"modules": [
-		// ─── Title ───────────────────────────────────
-		"title",
-		{ "type": "colors", "symbol": "circle"},
-
-		// ─── System ──────────────────────────────────
-		{ "type": "custom", "format": "┌─── System ─────┐┌───────────────────────────────────────────┐" },
-		{ "type": "os", "key": "OS", "keyIcon": "├─ 󰣇", "keyColor": "red",  "outputColor": "blue",  "outputColor": "blue"},
-		{
-			"type": "localip",
-			"key": "Local IP",
-			"keyIcon": "├─ 󰩟",
-			"keyColor": "red",  "outputColor": "blue",
-			"showIpv6": true,
-			"showMac": true,
-			"showSpeed": true,
-			"showMtu": true,
-			"showLoop": true,
-			"showAllIps": true
-		},
-
-		// ─── Desktop ─────────────────────────────────
-		{ "type": "shell", "key": "Shell", "keyIcon": "├─ ", "keyColor": "red",  "outputColor": "blue" },
-
-		// ─── Hardware ────────────────────────────────
-		{ "type": "cpu", "key": "CPU", "keyIcon": "├─ 󰻠", "keyColor": "red",  "outputColor": "blue", "showPeCoreCount": true, "temp": true },
-		{ "type": "gpu", "key": "GPU [{index}]", "keyIcon": "├─ 󰢮", "keyColor": "red",  "outputColor": "blue", "driverSpecific": true, "temp": true },
-
-		// ─── Memory & Storage ────────────────────────
-		{ "type": "memory", "key": "Memory", "keyIcon": "├─ ", "keyColor": "red",  "outputColor": "blue" },
-		{ "type": "disk", "key": "Disk [{name}]", "keyIcon": "├─ 󰨣", "keyColor": "red",  "outputColor": "blue" },
-		{ "type": "custom", "format": "└────────────────┘└───────────────────────────────────────────┘" },
-	]
+    "display": {
+        "constants": [
+            "██ "
+        ]
+    },
+    "modules": [
+        {
+            "key": "{$1}Distro",
+            "keyColor": "38;5;210",
+            "type": "os"
+        },
+        {
+            "key": "{$1}Kernel",
+            "keyColor": "38;5;84",
+            "type": "kernel"
+        },
+        {
+            "key": "{$1}Shell",
+            "keyColor": "38;5;147",
+            "type": "shell"
+        },
+        {
+            "key": "{$1}Packages",
+            "keyColor": "38;5;200",
+            "type": "packages"
+        },
+        {
+            "key": "{$1}WM",
+            "keyColor": "38;5;44",
+            "type": "wm"
+        },
+        {
+            "key": "{$1}CPU",
+            "keyColor": "38;5;75",
+            "type": "cpu"
+        },
+        {
+            "key": "{$1}Memory",
+            "keyColor": "38;5;123",
+            "type": "memory"
+        }
+    ]
 }
