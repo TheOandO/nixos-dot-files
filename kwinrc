@@ -1,14 +1,17 @@
 [Desktops]
 Id_1=64f2ba66-494c-4a45-a0fe-15e226773d06
-Number=1
+Id_2=3fef39e1-2b11-430e-83dd-dcdf62cfb501
+Number=2
 Rows=1
 
 [Effect-blur]
+BlurStrength=4
+NoiseStrength=6
 Saturation=151
 
 [Effect-translucency]
 DropdownMenus=81
-Inactive=80
+Inactive=94
 IndividualMenuConfig=true
 MoveResize=51
 PopupMenus=81
@@ -20,9 +23,16 @@ translucencyEnabled=true
 [TabBox]
 LayoutName=sidebar
 
+[Tiling][3fef39e1-2b11-430e-83dd-dcdf62cfb501][68c04b0b-1f42-4cfc-86c4-879445ee3a42]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][64f2ba66-494c-4a45-a0fe-15e226773d06][68c04b0b-1f42-4cfc-86c4-879445ee3a42]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Xwayland]
 Scale=1
+
+[org.kde.kdecoration2]
+ButtonsOnLeft=FBS
