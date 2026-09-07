@@ -20,42 +20,139 @@ local suppressMaximizeRule = hl.window_rule({
 })
 suppressMaximizeRule:set_enabled(false)
 
+local function tagged_rule(tag, matches, field)
+    for _, match in ipairs(matches) do
+        if field then
+            local table = {}
+            table[field] = match
+            match = table
+        end
+        hl.window_rule({ match = match, tag = "+" .. tag })
+    end
+end
+
+local function create_tag(tag, rules)
+    local rule = { match = { tag = tag } }
+    for k, v in pairs(rules) do
+        rule[k] = v
+    end
+    hl.window_rule(rule)
+end
+
+-- All tags
+local opaque_tag = "opaque"
+local float_tag = "float"
+local float_60_70_tag = "float_60_70"
+local float_70_80_tag = "float_70_80"
+local float_50_60_tag = "float_50_60"
+local game_tag = "game"
+local xwl_popup_tag = "xwl_popup"
+local system_monitor_tag = "system_monitor"
+local music_player_tag = "music_player"
+local communication_app_tag = "communication_app"
+local todo_app_tag = "todo_app"
+
+-- Center all floating windows except xwayland windows (xwayland popups count as windows)
+hl.window_rule({ match = { float = true, xwayland = false }, center = true })
+
+-- Picture in picture (move and resize done via resizer in execs.lua)
+hl.window_rule({
+    match             = { title = "Picture(-| )in(-| )[Pp]icture" },
+    move              = "(monitor_w*0.98-window_w) (monitor_h*0.97-window_h)", -- Initial move so window doesn't jump so much
+    pin               = true,
+    float             = true,
+    keep_aspect_ratio = true,
+})
+
+
 -- Exclude zen extension popups from maximizing
-hl.window_rule({
-    match = {
-        class = "zen",
-        title = "^.*Extension:.*",
-    },
-    tile = false,
-    float = true,
-    maximize = false,
-    persistent_size = true,
-	move = {"monitor_w * 0.78", "(monitor_h * 0.775)"},
-	size = {"monitor_w * 0.2", "monitor_h * 0.4"},
-    suppress_event = "maximize",
-})
-
-hl.window_rule({
-    match = {
-        class = "zen",
-        title = "^Picture-in-Picture",
-    },
-    tile = false,
-    float = true,
-    maximize = false,
-	move = {"monitor_w * 0.78", "(monitor_h * 0.775)"},
-	persistent_size = true,
-	size = {"monitor_w * 0.2", "monitor_h * 0.2"},
-	stay_focused = false,
-    suppress_event = "maximize",
-})
-
--- Open maximized as default
 -- hl.window_rule({
---     match = { class = "kitty" },
---     maximize = true,
--- 	max_size = {"monitor_w * 0.5", "monitor_h"},
+--     match = {
+--         class = "zen",
+--         title = "^.*Extension:.*",
+--     },
+--     tile = false,
+--     float = true,
+--     maximize = false,
+--     persistent_size = true,
+-- 	move = {"monitor_w * 0.78", "(monitor_h * 0.775)"},
+-- 	size = {"monitor_w * 0.2", "monitor_h * 0.4"},
+--     suppress_event = "maximize",
 -- })
+
+-- Floating apps
+tagged_rule(float_tag, {
+    "guifetch",                           -- System info
+    "yad|zenity",                         -- Dialogs
+    "wev",                                -- Input detector
+    "org.gnome.FileRoller|file-roller",   -- Archive manager
+    "blueman-manager",                    -- Bluetooth GUI
+    "com.github.GradienceTeam.Gradience", -- GTK themer (deprecated)
+    "feh|imv|swappy",                     -- Image viewers
+    "org.quickshell",                     -- Quickshell
+}, "class")
+tagged_rule(float_tag, {
+    "File (Operation|Upload)( Progress)?", -- File manager operation progress (upload, move, copy, etc)
+    ".* Properties",                       -- File properties
+}, "title")
+-- 50% x 60%
+tagged_rule(float_50_60_tag, {
+    "nwg-look",              -- GTK theme manager
+    "system-config-printer", -- Printer config
+}, "class")
+
+
+-- Games
+tagged_rule(game_tag, {
+    "steam_app_[0-9]+",  -- Steam games
+    "steam_app_default", -- Lutris games
+    "gamescope",         -- Gamescope
+}, "class")
+-- Xwayland popups
+tagged_rule(xwl_popup_tag, {
+    { xwayland = true, title = "win[0-9]+" },
+    { xwayland = true, title = "",         class = "", initial_title = "", initial_class = "" }
+})
+
+-- Steam
+tagged_rule(float_tag, { { class = "steam", title = "Friends List" } })
+tagged_rule(xwl_popup_tag, { { class = "steam", title = "" } })
+
+-------------------------
+---- Tag definitions ----
+-------------------------
+-- These have to come after all uses of window tagging. Thank you Hyprland...
+
+create_tag(opaque_tag, { opaque = true })
+create_tag(float_tag, { float = true })
+create_tag(float_50_60_tag, { float = true, size = "(monitor_w*0.5) (monitor_h*0.6)", center = true })
+create_tag(float_60_70_tag, { float = true, size = "(monitor_w*0.6) (monitor_h*0.7)", center = true })
+create_tag(float_70_80_tag, { float = true, size = "(monitor_w*0.7) (monitor_h*0.8)", center = true })
+create_tag(game_tag, { opaque = true, immediate = true, idle_inhibit = "always" })
+create_tag(xwl_popup_tag, {
+    no_dim = true,
+    no_shadow = true,
+    no_blur = true,
+    opaque = true,
+})
+-------------------------
+---- Tag definitions ----
+-------------------------
+-- These have to come after all uses of window tagging. Thank you Hyprland...
+
+create_tag(opaque_tag, { opaque = true })
+create_tag(float_tag, { float = true })
+create_tag(float_50_60_tag, { float = true, size = "(monitor_w*0.5) (monitor_h*0.6)", center = true })
+create_tag(float_60_70_tag, { float = true, size = "(monitor_w*0.6) (monitor_h*0.7)", center = true })
+create_tag(float_70_80_tag, { float = true, size = "(monitor_w*0.7) (monitor_h*0.8)", center = true })
+create_tag(game_tag, { opaque = true, immediate = true, idle_inhibit = "always" })
+create_tag(xwl_popup_tag, {
+    no_dim = true,
+    no_shadow = true,
+    no_blur = true,
+    opaque = true,
+})
+
 
 
 hl.window_rule({

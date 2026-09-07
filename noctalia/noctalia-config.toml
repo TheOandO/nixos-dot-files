@@ -9,11 +9,12 @@ order = [ "default", "Workspace" ]
     capsule_padding = 8.0
     capsule_radius = 2
     capsule_thickness = 0.89999998360872269
-    center = [ "workspaces", "wallhaven_2" ]
+    center = [ "workspaces" ]
     enabled = true
-    end = []
+    end = [ "wallhaven_2" ]
     margin_edge = 0
-    position = "left"
+    margin_ends = 820
+    position = "top"
     radius = 2
     reserve_space = false
     shadow = false
@@ -28,7 +29,7 @@ order = [ "default", "Workspace" ]
     capsule_radius = 2
     capsule_thickness = 0.79999998584389687
     center = [ "active_window" ]
-    end = [ "group:g1", "group:g4", "group:g6", "group:g7" ]
+    end = [ "group:g1", "group:g4", "group:g6", "notifications" ]
     margin_edge = 2
     margin_ends = 0
     padding = 10
@@ -38,8 +39,11 @@ order = [ "default", "Workspace" ]
     radius_top_right = 0
     start = [ "group:g2", "group:g3" ]
     thickness = 36
+    widget_spacing = 8
 
         [[bar.default.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
         border = "on_surface"
         enabled = true
         fill = "surface_variant"
@@ -49,42 +53,41 @@ order = [ "default", "Workspace" ]
         padding = 8.0
 
         [[bar.default.capsule_group]]
+        accordion = true
+        accordion_direction = "end"
         border = "on_surface"
         enabled = true
         fill = "surface_variant"
         id = "g4"
-        members = [ "cpu", "ram", "power_profile" ]
+        members = [ "cat_3", "ram", "power_profile" ]
         opacity = 0.5
         padding = 10.0
 
         [[bar.default.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
         border = "on_surface"
         enabled = true
         fill = "surface_variant"
         id = "g6"
-        members = [ "weather", "date" ]
+        members = [ "weather", "separator", "date" ]
         opacity = 0.5
         padding = 10.0
 
         [[bar.default.capsule_group]]
-        border = "on_surface"
-        enabled = true
-        fill = "surface_variant"
-        id = "g7"
-        members = [ "notifications" ]
-        opacity = 0.5
-        padding = 6.0
-
-        [[bar.default.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
         border = "on_surface"
         enabled = true
         fill = "surface_variant"
         id = "g2"
-        members = [ "audio_visualizer", "media", "cat" ]
+        members = [ "audio_visualizer", "media", "separator", "cat" ]
         opacity = 0.5
         padding = 8.0
 
         [[bar.default.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
         border = "on_surface"
         enabled = true
         fill = "surface_variant"
@@ -99,6 +102,7 @@ hidden_tabs = [ "screen-time" ]
 sidebar = "full"
 
 [desktop_widgets]
+enabled = false
 schema_version = 2
 widget_order = []
 
@@ -114,17 +118,19 @@ auto_hide = true
 background_opacity = 0.79999998211860657
 enabled = true
 icon_size = 35
-launcher_position = "start"
-magnification_scale = 1.1500000022351742
+inactive_scale = 1.0
+launcher_position = "none"
+magnification_scale = 1.1000000014901161
 main_axis_padding = 8
-pinned = [ "zen", "kitty", "com.github.th_ch.youtube_music" ]
+pinned = [ "zen", "kitty", "com.github.th_ch.youtube_music", "vesktop" ]
+position = "left"
 radius = 12
 reserve_space = false
-shadow = false
+shadow = true
 show_dots = true
 
 [hooks]
-started = "/etc/nixos/sync-repos.sh"
+started = ""
 
 [hot_corners]
 enabled = true
@@ -139,13 +145,14 @@ enabled = true
 auto_locate = true
 
 [lockscreen]
+blur_intensity = 0.19999999552965164
 blurred_desktop = true
 fingerprint = false
 
 [lockscreen_widgets]
-enabled = false
+enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@DP-6" ]
+widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@DP-6", "lockscreen-widget-0000000000000001" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -153,28 +160,40 @@ widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@DP-6" ]
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 810.0
     cx = 960.0
-    cy = 961.0
+    cy = 442.0
     output = "DP-3"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
         background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
+        background_opacity = 0.0
+        background_radius = 0.0
+        center_password_text = true
         input_opacity = 1.0
-        input_radius = 6.0
-        show_login_button = true
+        input_radius = 0.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = false
+        show_login_button = false
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = false
+        show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-6"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 720.0
     cx = 960.0
     cy = 961.0
     output = "DP-6"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "login_box"
 
@@ -182,19 +201,45 @@ widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@DP-6" ]
         background_color = "surface_variant"
         background_opacity = 0.88
         background_radius = 12.0
+        center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
         show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 960.0
+    cy = 304.0
+    output = "DP-3"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        center_text = false
+        format = "{:%H:%M}"
 
 [nightlight]
 enabled = true
 
 [notification]
 background_opacity = 0.79999998211860657
+history_retention_hours = 6
 
 [osd]
 background_opacity = 0.79999998211860657
 offset_y = 14
+position_vertical = "center_left"
 
     [osd.kinds]
     bluetooth = false
@@ -211,11 +256,12 @@ browser_position = "center"
 download_dir = ""
 
 [plugins]
-enabled = [ "noctalia/bongocat", "noctalia/wallhaven" ]
+enabled = [ "noctalia/bongocat", "noctalia/wallhaven", "dotnetrob/cat" ]
 
 [shell]
-corner_radius_scale = 0.70000001043081284
+corner_radius_scale = 0.40000000596046448
 font_family = "DepartureMono Nerd Font Mono"
+panel_anchor_bar = "default"
 polkit_agent = true
 settings_show_advanced = true
 
@@ -232,27 +278,73 @@ settings_show_advanced = true
     wallpaper_placement = "floating"
     wallpaper_position = "center"
 
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = false
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
 [theme]
 community_palette = "Oxocarbon"
 mode = "dark"
 source = "wallpaper"
-wallpaper_scheme = "soft"
+wallpaper_scheme = "m3-tonal-spot"
 
     [theme.templates]
     builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "hyprland", "kitty", "qt" ]
-    community_ids = [ "zen-browser", "obsidian" ]
+    community_ids = [
+        "pear-desktop",
+        "zen-browser",
+        "gimp",
+        "inkscape",
+        "libreoffice",
+        "micro",
+        "obsidian",
+        "heroiclauncher",
+        "steam",
+        "snappy-switcher"
+    ]
 
 [wallpaper]
 directory = "/home/matty/Pictures/Wallpaper"
 
     [wallpaper.default]
-    path = "/home/matty/Pictures/Wallpaper/wallhaven-458951.png"
+    path = "/home/matty/Pictures/Wallpaper/wallhaven-k8385q.jpg"
 
     [wallpaper.last]
-    path = "/home/matty/Pictures/Wallpaper/wallhaven-458951.png"
+    path = "/home/matty/Pictures/Wallpaper/wallhaven-k8385q.jpg"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/matty/Pictures/Wallpaper/wallhaven-458951.png"
+    path = "/home/matty/Pictures/Wallpaper/wallhaven-k8385q.jpg"
 
     [wallpaper.monitors.DP-6]
     path = "/home/matty/Pictures/Wallpaper/max-suleimanov-dv-202.jpg"
@@ -278,8 +370,16 @@ tappy_mode = true
 type = "noctalia/bongocat:cat"
 use_mpris_filter = true
 
+[widget.cat_2]
+type = "noctalia/bongocat:cat"
+
+[widget.cat_3]
+show_cpu_percent = true
+type = "dotnetrob/cat:cat"
+
 [widget.cpu]
 show_label = false
+show_value = false
 
 [widget.date]
 format = "{:%a • %-I:%M %p}"
@@ -297,6 +397,11 @@ hide_inactive = true
 
 [widget.ram]
 show_label = false
+show_value = false
+
+[widget.separator]
+text = "|"
+type = "text"
 
 [widget.spacer_2]
 type = "spacer"
@@ -313,12 +418,12 @@ type = "noctalia/wallhaven:wallhaven"
 
 [widget.weather]
 show_condition = false
-show_temperature = false
+show_temperature = true
 
 [widget.workspaces]
 active_pill_size = 3.1000000000000001
 anchor = true
-display = "none"
 empty_color = "on_primary"
-inactive_pill_size = 1.4000000000000001
+inactive_pill_size = 1.6500000000000001
 occupied_color = "tertiary"
+show_labels = false

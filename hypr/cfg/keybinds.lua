@@ -32,6 +32,20 @@ local function layout_bind(bind_table)
     end
 end
 
+local function resize_active_window(x, y)
+    return function() -- returning the function so hl reloads everytime correctly
+        local win = hl.get_active_window()
+        if win and win.size then
+            local w = (win.size.x * (x / 100)) or 800
+            local h = (win.size.y * (y / 100)) or 600
+
+            hl.dispatch(hl.dsp.window.resize({ x = w, y = h, relative = true }))
+        else
+            hl.dispatch(hl.dsp.no_op())
+        end
+    end
+end
+
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Space",          hl.dsp.exec_cmd(terminal))
@@ -65,10 +79,14 @@ hl.bind(mainMod .. " + CTRL + left",    hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + CTRL + right",   hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + CTRL + up",      hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + CTRL + down",    hl.dsp.focus({ direction = "down" }))
-hl.bind(mainMod .. " + SHIFT + left",   hl.dsp.window.move({ direction = "left" }))
-hl.bind(mainMod .. " + SHIFT + right",  hl.dsp.window.move({ direction = "right" }))
-hl.bind(mainMod .. " + SHIFT + up",     hl.dsp.window.move({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + down",   hl.dsp.window.move({ direction = "down" }))
+hl.bind(mainMod .. " + CTRL + SHIFT + left",   hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + CTRL + SHIFT + right",  hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + CTRL + SHIFT + up",     hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + CTRL + SHIFT + down",   hl.dsp.window.move({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + left",   resize_active_window(-10, 0), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + right",  resize_active_window(10, 0), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + up",     resize_active_window(0, -10), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + down",   resize_active_window(0, 10), { repeating = true })
 
 -- hl.bind("ALT + TAB",                    hl.dsp.exec_cmd(ipc .. " window-switcher"))
 hl.bind("ALT + Tab",                    hl.dsp.exec_cmd("snappy-switcher next --mod alt"))

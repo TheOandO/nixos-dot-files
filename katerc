@@ -22,6 +22,7 @@ Word Wrap Marker=false
 [MainWindow]
 1920x1080 screen: Height=744
 1920x1080 screen: Width=695
+1920x1080 screen: Window-Maximized=true
 
 [filetree]
 editShade=183,220,246
