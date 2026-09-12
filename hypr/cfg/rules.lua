@@ -170,6 +170,15 @@ hl.window_rule({
     no_focus = true,
 })
 
+-- Make apps float by default in desktop 1
+hl.window_rule({
+    match = {
+        workspace = "1"
+    },
+
+    float = true,
+})
+
 -- Layer rules also return a handle.
 -- local overlayLayerRule = hl.layer_rule({
 --     name  = "no-anim-overlay",
@@ -215,7 +224,7 @@ hl.window_rule({
 --     rounding    = 0,
 -- })
 
-hl.workspace_rule({ workspace = "1", default_name = "multitask", persistent = true, default = true})
+hl.workspace_rule({ workspace = "1", default_name = "float", persistent = true, default = true})
 hl.workspace_rule({ workspace = "2", default_name = "focus", persistent = true, layout = "master" })
 hl.workspace_rule({ workspace = "3", default_name = "gaming", persistent = true, layout = "monocle"  })
 hl.workspace_rule({ workspace = "4", persistent = true })

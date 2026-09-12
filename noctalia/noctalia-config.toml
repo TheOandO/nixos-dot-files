@@ -5,13 +5,14 @@ order = [ "default", "Workspace" ]
     auto_hide = true
     background_opacity = 0.0
     capsule = true
+    capsule_border = "on_surface"
     capsule_opacity = 0.4999999888241291
     capsule_padding = 8.0
     capsule_radius = 2
     capsule_thickness = 0.89999998360872269
     center = [ "workspaces" ]
     enabled = true
-    end = [ "wallhaven_2" ]
+    end = []
     margin_edge = 0
     margin_ends = 820
     position = "top"
@@ -29,7 +30,7 @@ order = [ "default", "Workspace" ]
     capsule_radius = 2
     capsule_thickness = 0.79999998584389687
     center = [ "active_window" ]
-    end = [ "group:g1", "group:g4", "group:g6", "notifications" ]
+    end = [ "group:g1", "group:g4", "group:g6", "group:g5" ]
     margin_edge = 2
     margin_ends = 0
     padding = 10
@@ -97,9 +98,22 @@ order = [ "default", "Workspace" ]
         padding = 8.0
         radius = 4.0
 
+        [[bar.default.capsule_group]]
+        accordion = true
+        accordion_direction = "end"
+        border = "on_surface"
+        enabled = true
+        fill = "surface_variant"
+        id = "g5"
+        members = [ "notifications", "clipboard", "wallhaven_3" ]
+        opacity = 0.5
+        padding = 8.0
+        radius = 2.0
+
 [control_center]
 hidden_tabs = [ "screen-time" ]
 sidebar = "full"
+width = 800
 
 [desktop_widgets]
 enabled = false
@@ -266,12 +280,14 @@ polkit_agent = true
 settings_show_advanced = true
 
     [shell.launcher]
-    categories = false
+    app_grid = true
+    categories = true
     session_search = true
 
     [shell.panel]
     clipboard_position = "auto"
     control_center_placement = "floating"
+    open_near_click_control_center = true
     open_near_click_wallpaper = true
     session_placement = "floating"
     session_position = "center"
@@ -338,13 +354,13 @@ wallpaper_scheme = "m3-tonal-spot"
 directory = "/home/matty/Pictures/Wallpaper"
 
     [wallpaper.default]
-    path = "/home/matty/Pictures/Wallpaper/wallhaven-k8385q.jpg"
+    path = "/home/matty/Pictures/Wallpaper/wallhaven-rqdklj.jpg"
 
     [wallpaper.last]
-    path = "/home/matty/Pictures/Wallpaper/wallhaven-k8385q.jpg"
+    path = "/home/matty/Pictures/Wallpaper/wallhaven-rqdklj.jpg"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/matty/Pictures/Wallpaper/wallhaven-k8385q.jpg"
+    path = "/home/matty/Pictures/Wallpaper/wallhaven-rqdklj.jpg"
 
     [wallpaper.monitors.DP-6]
     path = "/home/matty/Pictures/Wallpaper/max-suleimanov-dv-202.jpg"
@@ -385,8 +401,11 @@ show_value = false
 format = "{:%a • %-I:%M %p}"
 
 [widget.media]
+artist_first = true
 hide_album_art = true
-max_length = 170
+max_length = 160
+scale = 1.1000000000000001
+show_progress = true
 title_scroll = "always"
 
 [widget.network]
@@ -400,6 +419,7 @@ show_label = false
 show_value = false
 
 [widget.separator]
+interactive = false
 text = "|"
 type = "text"
 
@@ -414,6 +434,9 @@ type = "noctalia/wallhaven:wallhaven"
 
 [widget.wallhaven_2]
 glyph = "zzz"
+type = "noctalia/wallhaven:wallhaven"
+
+[widget.wallhaven_3]
 type = "noctalia/wallhaven:wallhaven"
 
 [widget.weather]
