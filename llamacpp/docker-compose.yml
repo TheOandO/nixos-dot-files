@@ -1,6 +1,6 @@
 services:
     llamacpp:
-        image: ghcr.io/ggml-org/llama.cpp:server-vulkan
+        image: ghcr.io/anbeeld/beellama.cpp:server-vulkan
         container_name: llamacpp
         restart: unless-stopped
         ports:
