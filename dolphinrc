@@ -1,5 +1,8 @@
 MenuBar=Disabled
 
+[ExtractDialog]
+1920x1080 screen: Window-Maximized=true
+
 [General]
 ConfirmClosingMultipleTabs=false
 Version=202
@@ -14,7 +17,7 @@ MenuBar=Disabled
 
 [Notification Messages]
 ConfirmRenameFileType=false
+warnAboutRisksBeforeActingAsAdmin=false
 
 [PreviewSettings]
 Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,heif,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail
-
