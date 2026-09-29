@@ -60,7 +60,7 @@ order = [ "default", "Workspace" ]
         enabled = true
         fill = "surface_variant"
         id = "g4"
-        members = [ "cat_3", "ram", "power_profile" ]
+        members = [ "cat_3", "sysmon", "ram", "power_profile" ]
         opacity = 0.5
         padding = 10.0
 
@@ -147,6 +147,7 @@ show_dots = true
 started = ""
 
 [hot_corners]
+delay_ms = 400
 enabled = true
 
     [hot_corners.top_left]
@@ -206,8 +207,8 @@ widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@DP-6", "lock
     cx = 960.0
     cy = 961.0
     output = "DP-6"
-    placement_height = 0.0
-    placement_width = 0.0
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "login_box"
 
@@ -329,6 +330,11 @@ settings_show_advanced = true
     shortcut = "5"
     variant = "destructive"
 
+    [shell.window_switcher]
+    mru = true
+    show_count = false
+    style = "compact"
+
 [theme]
 community_palette = "Oxocarbon"
 mode = "dark"
@@ -354,16 +360,16 @@ wallpaper_scheme = "m3-tonal-spot"
 directory = "/home/matty/Pictures/Wallpaper"
 
     [wallpaper.default]
-    path = "/home/matty/Pictures/Wallpaper/wallhaven-rqdklj.jpg"
+    path = "/home/matty/Pictures/Wallpaper/wallhaven-vpywv3.jpg"
 
     [wallpaper.last]
-    path = "/home/matty/Pictures/Wallpaper/wallhaven-rqdklj.jpg"
+    path = "/home/matty/Pictures/Wallpaper/wallhaven-vpywv3.jpg"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/matty/Pictures/Wallpaper/wallhaven-rqdklj.jpg"
+    path = "/home/matty/Pictures/Wallpaper/wallhaven-vpywv3.jpg"
 
     [wallpaper.monitors.DP-6]
-    path = "/home/matty/Pictures/Wallpaper/max-suleimanov-dv-202.jpg"
+    path = "/home/matty/Pictures/Wallpaper/wallhaven-k8385q.jpg"
 
 [widget.active_window]
 anchor = true
@@ -376,12 +382,14 @@ title_scroll = "on_hover"
 bands = 51
 color_1 = "error"
 color_2 = "on_error"
+interactive = false
 mirrored = false
 show_when_idle = true
 width = 100
 
 [widget.cat]
 audio_spectrum = true
+interactive = false
 tappy_mode = true
 type = "noctalia/bongocat:cat"
 use_mpris_filter = true
@@ -425,6 +433,9 @@ type = "text"
 
 [widget.spacer_2]
 type = "spacer"
+
+[widget.sysmon]
+stat = "gpu_vram"
 
 [widget.volume]
 show_label = false

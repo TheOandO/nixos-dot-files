@@ -88,9 +88,9 @@ hl.bind(mainMod .. " + SHIFT + right",  resize_active_window(10, 0), { repeating
 hl.bind(mainMod .. " + SHIFT + up",     resize_active_window(0, -10), { repeating = true })
 hl.bind(mainMod .. " + SHIFT + down",   resize_active_window(0, 10), { repeating = true })
 
--- hl.bind("ALT + TAB",                    hl.dsp.exec_cmd(ipc .. " window-switcher"))
-hl.bind("ALT + Tab",                    hl.dsp.exec_cmd("snappy-switcher next --mod alt"))
-hl.bind("SUPER + TAB",                  hl.dsp.exec_cmd("snappy-switcher next --workspace --mod super"))
+hl.bind("ALT + TAB",                    hl.dsp.exec_cmd(ipc .. " window-switcher"))
+-- hl.bind("ALT + Tab",                    hl.dsp.exec_cmd("snappy-switcher next --mod alt"))
+-- hl.bind("SUPER + TAB",                  hl.dsp.exec_cmd("snappy-switcher next --workspace --mod super"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + ALT + [0-9]
