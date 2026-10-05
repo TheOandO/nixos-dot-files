@@ -6,48 +6,79 @@ order = [ "main", "nobar" ]
 
     [bar.main]
     background_opacity = 0.59999998658895493
-    center = [ "workspaces" ]
+    center = [ "group:g4" ]
     concave_edge_corners = false
     contact_shadow = true
-    enabled = false
-    end = [ "tray", "privacy", "group:g1", "group:g3" ]
+    enabled = true
+    end = [ "group:g5", "group:g1", "battery", "group:g3" ]
+    hover_highlight = false
     margin_edge = 6
-    margin_ends = 400
+    margin_ends = 300
     padding = 8
     panel_overlap = 2
     radius = 16
     shadow = false
-    start = [ "group:g2", "battery" ]
-    thickness = 26
-    widget_spacing = 6
+    start = [ "group:g6", "group:g2" ]
+    thickness = 28
+    widget_spacing = 8
 
         [[bar.main.capsule_group]]
-        accordion = false
+        accordion = true
         accordion_direction = "end"
         enabled = true
         fill = "surface_variant"
         id = "g2"
-        members = [ "cpu", "ram" ]
+        members = [ "cat", "ram", "power_profile" ]
         opacity = 0.0
         padding = 6.0
 
         [[bar.main.capsule_group]]
-        accordion = false
+        accordion = true
         accordion_direction = "end"
         enabled = true
         fill = "surface_variant"
         id = "g1"
-        members = [ "volume", "network" ]
+        members = [ "network", "bluetooth", "volume" ]
         opacity = 0.0
         padding = 6.0
 
         [[bar.main.capsule_group]]
-        accordion = false
+        accordion = true
         accordion_direction = "end"
         enabled = true
         fill = "surface_variant"
         id = "g3"
-        members = [ "date" ]
+        members = [ "date", "notifications", "wallhaven" ]
+        opacity = 0.0
+        padding = 6.0
+
+        [[bar.main.capsule_group]]
+        accordion = true
+        accordion_direction = "start"
+        enabled = true
+        fill = "surface_variant"
+        id = "g4"
+        members = [ "audio_visualizer", "media" ]
+        opacity = 0.0
+        padding = 6.0
+
+        [[bar.main.capsule_group]]
+        accordion = true
+        accordion_direction = "start"
+        enabled = true
+        fill = "surface_variant"
+        id = "g5"
+        members = [ "tray", "privacy" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.main.capsule_group]]
+        accordion = true
+        accordion_direction = "start"
+        enabled = true
+        fill = "surface_variant"
+        id = "g6"
+        members = [ "workspaces", "active_window" ]
         opacity = 0.0
         padding = 6.0
 
@@ -59,6 +90,7 @@ order = [ "main", "nobar" ]
     capsule_padding = 11.0
     capsule_thickness = 0.99999998137354851
     center = [ "workspaces" ]
+    enabled = false
     end = [ "group:g2", "group:g1" ]
     margin_edge = 6
     margin_ends = 0
@@ -71,7 +103,7 @@ order = [ "main", "nobar" ]
 
         [[bar.nobar.capsule_group]]
         accordion = false
-        accordion_direction = "end"
+        accordion_direction = "start"
         enabled = true
         fill = "on_primary"
         foreground = "primary"
@@ -230,7 +262,7 @@ background_opacity = 0.69999998435378075
 
 [osd]
 background_opacity = 0.73999998345971107
-offset_y = 45
+offset_y = 55
 position = "bottom_center"
 position_vertical = "center_right"
 
@@ -351,13 +383,13 @@ directory = "/home/matty/Pictures/Wallpapers"
 transition_duration = 600
 
     [wallpaper.default]
-    path = "/home/matty/Pictures/Wallpapers/max-suleimanov-dv-202.sync-conflict-20260613-201032-ON5JSGN.jpg"
+    path = "/home/matty/Pictures/Wallpapers/wallhaven-yq93zk.jpg"
 
     [wallpaper.last]
-    path = "/home/matty/Pictures/Wallpapers/max-suleimanov-dv-202.sync-conflict-20260613-201032-ON5JSGN.jpg"
+    path = "/home/matty/Pictures/Wallpapers/wallhaven-yq93zk.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/matty/Pictures/Wallpapers/max-suleimanov-dv-202.sync-conflict-20260613-201032-ON5JSGN.jpg"
+    path = "/home/matty/Pictures/Wallpapers/wallhaven-yq93zk.jpg"
 
 [widget.active_window]
 anchor = false
@@ -367,10 +399,10 @@ min_length = 0
 
 [widget.audio_visualizer]
 bands = 40
-color_2 = "on_primary"
-mirrored = false
+color_2 = "primary"
+mirrored = true
 show_when_idle = true
-width = 60
+width = 80
 
 [widget.battery]
 display_mode = "graphic"
@@ -379,8 +411,12 @@ show_label = false
 [widget.bluetooth]
 scale = 1.2
 
+[widget.cat]
+show_cpu_percent = true
+type = "dotnetrob/cat:cat"
+
 [widget.clock]
-format = "{:%H:%M |}"
+format = "{:%H:%M}"
 
 [widget.cpu]
 show_label = false
@@ -419,12 +455,16 @@ type = "text"
 scale = 0.94999999999999996
 show_label = false
 
+[widget.wallhaven]
+type = "noctalia/wallhaven:wallhaven"
+
 [widget.weather]
 show_condition = false
 show_temperature = false
 
 [widget.workspaces]
-active_pill_size = 2.0
+active_pill_size = 1.6000000000000001
 capsule_radius = "auto"
 empty_color = "tertiary"
+pill_scale = 0.70000000000000007
 show_labels = false

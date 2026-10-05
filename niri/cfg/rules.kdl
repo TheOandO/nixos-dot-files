@@ -4,6 +4,7 @@
 
 	    background-effect {
 	        blur true
+	        xray false
 	    }
         opacity 0.9
 
@@ -18,6 +19,21 @@
         match namespace="^noctalia-wallpaper*"
         place-within-backdrop true
     }
+
+	window-rule {
+		match app-id="dev.noctalia.Noctalia"
+	  	open-floating true
+	  	default-column-width { fixed 1080; }
+	  	default-window-height { fixed 720; }
+	}
+	
+	layer-rule {
+		match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+		background-effect {
+	    	xray false
+	    	blur false
+	  }
+	}
 
 	window-rule {
     	match app-id="zen|obsidian|vscode|libreoffice|org.gnome.Nautilus|heroic" 
