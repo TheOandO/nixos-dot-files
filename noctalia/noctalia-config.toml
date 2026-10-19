@@ -9,14 +9,14 @@ order = [ "main", "nobar" ]
     center = [ "group:g4" ]
     concave_edge_corners = false
     contact_shadow = true
-    enabled = true
+    enabled = false
     end = [ "group:g5", "group:g1", "battery", "group:g3" ]
     hover_highlight = false
     margin_edge = 6
     margin_ends = 300
     padding = 8
     panel_overlap = 2
-    radius = 16
+    radius = 12
     shadow = false
     start = [ "group:g6", "group:g2" ]
     thickness = 28
@@ -90,7 +90,7 @@ order = [ "main", "nobar" ]
     capsule_padding = 11.0
     capsule_thickness = 0.99999998137354851
     center = [ "workspaces" ]
-    enabled = false
+    enabled = true
     end = [ "group:g2", "group:g1" ]
     margin_edge = 6
     margin_ends = 0
@@ -175,15 +175,21 @@ auto_locate = true
 
 [lockscreen]
 allow_empty_password = true
-blur_intensity = 0.79999998211860657
-enabled = false
+blur_intensity = 0.71999998390674591
+blurred_desktop = true
+enabled = true
 fingerprint = false
 wallpaper = "/home/matty/Pictures/Wallpapers/max-suleimanov-dv-202.sync-conflict-20260613-201032-ON5JSGN.jpg"
 
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000001", "lockscreen-widget-0000000000000003" ]
+widget_order = [
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000003",
+    "lockscreen-widget-0000000000000004"
+]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -192,9 +198,9 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 70.0
-    box_width = 400.0
-    cx = 640.0
-    cy = 432.0
+    box_width = 352.0
+    cx = 224.0
+    cy = 749.0
     output = "eDP-1"
     placement_height = 800.0
     placement_width = 1280.0
@@ -218,10 +224,10 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
         show_weather = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
-    box_height = 96.0
-    box_width = 320.0
-    cx = 640.0
-    cy = 288.0
+    box_height = 64.0
+    box_width = 208.0
+    cx = 168.0
+    cy = 664.0
     output = "eDP-1"
     placement_height = 800.0
     placement_width = 1280.0
@@ -232,14 +238,15 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
         background_opacity = 0.0
         background_padding = 0.0
         background_radius = 10.0
+        center_text = false
         format = "{:%H:%M}"
         shadow = false
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
-    box_height = 48.0
-    box_width = 320.0
-    cx = 640.0
-    cy = 352.0
+    box_height = 32.0
+    box_width = 288.0
+    cx = 208.0
+    cy = 704.0
     output = "eDP-1"
     placement_height = 800.0
     placement_width = 1280.0
@@ -250,9 +257,25 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
         background_opacity = 0.0
         background_padding = 8.0
         background_radius = 6.0
+        center_text = false
         clock_style = "digital"
         format = "{:%a, %d-%m-%Y}"
         shadow = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
+    box_height = 64.0
+    box_width = 160.0
+    cx = 336.0
+    cy = 664.0
+    output = "eDP-1"
+    placement_height = 800.0
+    placement_width = 1280.0
+    rotation = 0.0
+    type = "weather"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000004.settings]
+        background = false
+        show_forecast = false
 
 [nightlight]
 enabled = true
@@ -349,7 +372,7 @@ ui_scale = 1.1000000089406967
         [[shell.session.actions]]
         action = "lock_and_suspend"
         countdown_seconds = 0.0
-        enabled = false
+        enabled = true
         shortcut = "3"
         variant = "default"
 
@@ -400,7 +423,7 @@ min_length = 0
 [widget.audio_visualizer]
 bands = 40
 color_2 = "primary"
-mirrored = true
+mirrored = false
 show_when_idle = true
 width = 80
 

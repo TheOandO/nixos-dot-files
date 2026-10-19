@@ -14,6 +14,7 @@ binds {
     MOD+Q                   cooldown-ms=250  hotkey-overlay-title="Open Browser: Zen" { spawn "zen"; }
     MOD+SHIFT+L                                hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
     MOD+SHIFT+Q                              hotkey-overlay-title="Session: noctalia session" { spawn-sh "noctalia msg panel-toggle session"; }
+    MOD+SHIFT+K                              hotkey-overlay-title="System Control: Toggle Caffeine mode" { spawn-sh "noctalia msg caffeine-toggle"; }
     MOD+SHIFT+W                              hotkey-overlay-title="Wallpaper Selector" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
     // Please choose your own file manager.
     MOD+E                                    hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
