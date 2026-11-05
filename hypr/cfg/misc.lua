@@ -18,12 +18,13 @@ hl.config({
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.env("QT_QPA_PLATFORM", "wayland")
 hl.env("QT_QPA_PLATFORMTHEME", "kde")
--- hl.env("QT_STYLE_OVERRIDE", "kvantum")
+hl.env("GTK_USE_PORTAL", "1")
 hl.env("HYPRCURSOR_SIZE", "20")
 hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_SIZE", "20")
 hl.env("XDG_DATA_DIRS", "$XDG_DATA_DIRS:/run/current-system/sw/share")
+hl.env("NIXOS_OZONE_WL", "1")
 
 -----------------------
 ----- PERMISSIONS -----

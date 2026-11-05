@@ -40,6 +40,7 @@ local function create_tag(tag, rules)
 end
 
 -- All tags
+local maximize_tag = "maximize"
 local opaque_tag = "opaque"
 local float_tag = "float"
 local float_60_70_tag = "float_60_70"
@@ -51,6 +52,7 @@ local system_monitor_tag = "system_monitor"
 local music_player_tag = "music_player"
 local communication_app_tag = "communication_app"
 local todo_app_tag = "todo_app"
+local half_screen_tag = "half_screen"
 
 -- Center all floating windows except xwayland windows (xwayland popups count as windows)
 hl.window_rule({ match = { float = true, xwayland = false }, center = true })
@@ -64,21 +66,6 @@ hl.window_rule({
     keep_aspect_ratio = true,
 })
 
-
--- Exclude zen extension popups from maximizing
--- hl.window_rule({
---     match = {
---         class = "zen",
---         title = "^.*Extension:.*",
---     },
---     tile = false,
---     float = true,
---     maximize = false,
---     persistent_size = true,
--- 	move = {"monitor_w * 0.78", "(monitor_h * 0.775)"},
--- 	size = {"monitor_w * 0.2", "monitor_h * 0.4"},
---     suppress_event = "maximize",
--- })
 
 -- Floating apps
 tagged_rule(float_tag, {
@@ -101,6 +88,7 @@ tagged_rule(float_50_60_tag, {
     "system-config-printer", -- Printer config
 }, "class")
 
+tagged_rule(float_50_60_tag, { workspace = "1" })
 
 -- Games
 tagged_rule(game_tag, {
@@ -118,28 +106,15 @@ tagged_rule(xwl_popup_tag, {
 tagged_rule(float_tag, { { class = "steam", title = "Friends List" } })
 tagged_rule(xwl_popup_tag, { { class = "steam", title = "" } })
 
+tagged_rule(maximize_tag, { "code", } , "class")
+tagged_rule(half_screen_tag, { { class = "kitty" } })
+
 -------------------------
 ---- Tag definitions ----
 -------------------------
 -- These have to come after all uses of window tagging. Thank you Hyprland...
-
-create_tag(opaque_tag, { opaque = true })
-create_tag(float_tag, { float = true })
-create_tag(float_50_60_tag, { float = true, size = "(monitor_w*0.5) (monitor_h*0.6)", center = true })
-create_tag(float_60_70_tag, { float = true, size = "(monitor_w*0.6) (monitor_h*0.7)", center = true })
-create_tag(float_70_80_tag, { float = true, size = "(monitor_w*0.7) (monitor_h*0.8)", center = true })
-create_tag(game_tag, { opaque = true, immediate = true, idle_inhibit = "always" })
-create_tag(xwl_popup_tag, {
-    no_dim = true,
-    no_shadow = true,
-    no_blur = true,
-    opaque = true,
-})
--------------------------
----- Tag definitions ----
--------------------------
--- These have to come after all uses of window tagging. Thank you Hyprland...
-
+create_tag(maximize_tag, { maximize = true, fullscreen = true, fullscreen_state = 1 })
+create_tag(half_screen_tag, { size = "(monitor_w*0.5) monitor_h" })
 create_tag(opaque_tag, { opaque = true })
 create_tag(float_tag, { float = true })
 create_tag(float_50_60_tag, { float = true, size = "(monitor_w*0.5) (monitor_h*0.6)", center = true })
@@ -177,6 +152,7 @@ hl.window_rule({
     },
 
     float = true,
+    fullscreen = false,
 })
 
 -- Layer rules also return a handle.
@@ -206,6 +182,28 @@ hl.window_rule({
     float = true,
 })
 
+hl.window_rule({
+    name = "xwayland-video-bridge-fixes",
+    match = {
+        class = "xwaylandvideobridge"
+    },
+
+    no_initial_focus = true,
+    no_focus = true,
+    no_anim = true,
+    no_blur = true,
+    max_size = {1,1},
+    opacity = 0.0
+})
+
+hl.window_rule({
+    match = {
+        class = "kitty"
+    },
+    fullscreen = false,
+    fullscreen_state = 0,
+})
+
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
 -- uncomment all if you wish to use that.
@@ -224,9 +222,9 @@ hl.window_rule({
 --     rounding    = 0,
 -- })
 
-hl.workspace_rule({ workspace = "1", default_name = "float", persistent = true, default = true})
-hl.workspace_rule({ workspace = "2", default_name = "focus", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "3", default_name = "gaming", persistent = true, layout = "monocle"  })
+hl.workspace_rule({ workspace = "1", persistent = true, default = true})
+hl.workspace_rule({ workspace = "2", persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "3", persistent = true, layout = "monocle"  })
 hl.workspace_rule({ workspace = "4", persistent = true })
 hl.workspace_rule({ workspace = "5", persistent = true })
 
